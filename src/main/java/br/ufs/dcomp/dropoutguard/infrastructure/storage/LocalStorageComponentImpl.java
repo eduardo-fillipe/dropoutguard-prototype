@@ -7,14 +7,27 @@ import br.ufs.dcomp.dropoutguard.domain.storage.exception.ObjectIsNotAFileExcept
 import org.springframework.stereotype.Component;
 
 import java.io.*;
+import java.nio.file.Path;
 
 @Component
 public class LocalStorageComponentImpl implements StorageComponent {
 
+    private final Path root;
+
+    public LocalStorageComponentImpl() {
+        this.root = Path.of(System.getProperty("user.dir"));
+    }
+
+    public LocalStorageComponentImpl(Path rootPath) {
+        this.root = rootPath;
+    }
+
     @Override
     public FileObject load(String objectName) throws FileNotFoundException {
 
-        try (BufferedInputStream bis = new BufferedInputStream(new FileInputStream(objectName))) {
+        File file = root.resolve(objectName).toAbsolutePath().toFile();
+
+        try (BufferedInputStream bis = new BufferedInputStream(new FileInputStream(file))) {
             byte[] buffer = new byte[bis.available()];
             int bytesRead = bis.read(buffer);
 
@@ -32,7 +45,9 @@ public class LocalStorageComponentImpl implements StorageComponent {
 
     @Override
     public void save(FileObject file) {
-        try (FileOutputStream fos = new FileOutputStream(file.getObjectName())) {
+        File dir = root.resolve(file.getObjectName()).toAbsolutePath().toFile();
+
+        try (FileOutputStream fos = new FileOutputStream(dir)) {
             fos.write(file.getData());
         } catch (IOException e) {
             throw new RuntimeException(e);
@@ -41,7 +56,7 @@ public class LocalStorageComponentImpl implements StorageComponent {
 
     @Override
     public void delete(String objectName) throws FileNotFoundException {
-        File file = new File(objectName);
+        File file = root.resolve(objectName).toAbsolutePath().toFile();
 
         if (!file.exists()) return;
 
@@ -52,6 +67,6 @@ public class LocalStorageComponentImpl implements StorageComponent {
 
     @Override
     public boolean exists(String objectName) {
-        return new File(objectName).exists();
+        return this.root.resolve(objectName).toAbsolutePath().toFile().exists();
     }
 }

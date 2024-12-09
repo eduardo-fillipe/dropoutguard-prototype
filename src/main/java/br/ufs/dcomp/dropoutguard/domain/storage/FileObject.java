@@ -8,7 +8,7 @@ import lombok.Setter;
 @Setter
 public class FileObject {
 
-    @Builder
+    @Builder(toBuilder = true)
     public FileObject(String objectName, byte[] data) {
         this.objectName = objectName;
         this.data = data;
