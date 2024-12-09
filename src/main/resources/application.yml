@@ -1,3 +1,13 @@
 spring:
     application:
         name: dropoutguard
+    threads:
+        virtual:
+            enabled: true
+
+
+dropoutguard:
+    infrastructure:
+        knowledge-database:
+            event:
+                topic-name: KnowledgeDatabaseEventsTopic

@@ -1,0 +1,19 @@
+package br.ufs.dcomp.dropoutguard.domain.storage;
+
+import lombok.Builder;
+import lombok.Getter;
+import lombok.Setter;
+
+@Getter
+@Setter
+public class FileObject {
+
+    @Builder
+    public FileObject(String objectName, byte[] data) {
+        this.objectName = objectName;
+        this.data = data;
+    }
+
+    private String objectName;
+    private byte[] data;
+}
