@@ -10,6 +10,7 @@ import java.util.UUID;
 
 import static br.ufs.dcomp.dropoutguard.domain.knowledgedatabase.KnowledgeDatabaseStatus.*;
 
+@AllArgsConstructor
 public class KnowledgeDatabase implements Serializable {
     @Getter
     @Setter
@@ -31,7 +32,7 @@ public class KnowledgeDatabase implements Serializable {
     private String reason;
 
     @Getter
-    private String registerFileLocation;
+    private final String registerFileLocation;
 
     @Getter
     @Setter
