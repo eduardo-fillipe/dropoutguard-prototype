@@ -30,4 +30,19 @@ public record KnowledgeDatabaseEventDTO(
             knowledgeDatabase.getStatus()
         );
     }
+
+    public KnowledgeDatabase toKnowledgeDatabase() {
+        return new KnowledgeDatabase(
+            id,
+            name,
+            description,
+            status,
+            reason,
+            registerFileLocation,
+            cancellationReason,
+            requestDateTime,
+            cancellationDateTime,
+            lastModifiedDateTime
+        );
+    }
 }

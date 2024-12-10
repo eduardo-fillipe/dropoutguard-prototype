@@ -15,7 +15,7 @@ public class RabbitMQConfiguration {
         this.knowledgeDatabaseEventMessagePublisher = knowledgeDatabaseEventMessagePublisher;
     }
 
-    @Bean
+    @Bean("knowledgeDatabaseTopicExchange")
     public TopicExchange knowledgeDatabaseTopicExchange() {
         return new TopicExchange(knowledgeDatabaseEventMessagePublisher.getExchangeName());
     }

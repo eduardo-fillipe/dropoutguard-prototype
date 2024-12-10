@@ -12,6 +12,7 @@ import br.ufs.dcomp.dropoutguard.domain.storage.StorageComponent;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import jakarta.transaction.Transactional;
+import lombok.NonNull;
 import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
 
@@ -26,21 +27,23 @@ public class RequestKnowledgeDatabaseUpdateUseCase {
     private final EventPublisher<KnowledgeDatabaseEventDTO> eventPublisher;
     private final StorageComponent storageComponent;
     private final ObjectMapper mapper;
+    private final ObjectMapper objectMapper;
 
     public RequestKnowledgeDatabaseUpdateUseCase(
             KnowledgeDatabaseRepository knowledgeDatabaseRepository,
             EventPublisher<KnowledgeDatabaseEventDTO> eventPublisher,
             StorageComponent storageComponent,
-            ObjectMapper mapper) {
+            ObjectMapper mapper, ObjectMapper objectMapper) {
         this.knowledgeDatabaseRepository = knowledgeDatabaseRepository;
         this.eventPublisher = eventPublisher;
         this.storageComponent = storageComponent;
         this.mapper = mapper;
+        this.objectMapper = objectMapper;
     }
 
     @Transactional
     @SneakyThrows(JsonProcessingException.class)
-    public RequestUpdateResultDTO execute(RequestUpdateParams params) {
+    public RequestUpdateResultDTO execute(@NonNull RequestUpdateParams params) {
         log.info("Received request update knowledge database {}", mapper.writeValueAsString(params));
 
         String knowledgeDatabaseId = UUID.randomUUID().toString();
@@ -65,6 +68,8 @@ public class RequestKnowledgeDatabaseUpdateUseCase {
                 .reason(params.reason())
                 .build()
         );
+
+        log.info("Created knowledge database {}", objectMapper.writeValueAsString(knowledgeDatabase));
 
         eventPublisher.publish(EventMessage.<KnowledgeDatabaseEventDTO>builder()
                 .payload(KnowledgeDatabaseEventDTO.of(knowledgeDatabase))

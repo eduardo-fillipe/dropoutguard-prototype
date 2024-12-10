@@ -17,6 +17,10 @@ public class LocalStorageComponentImpl implements StorageComponent {
 
     public LocalStorageComponentImpl(@Value("${dropoutguard.infrastructure.storage.local.root-path}#{null}") String rootPath) {
         this.root = rootPath == null ? Path.of(System.getProperty("user.dir")) : Path.of(rootPath);
+
+        if (!root.toFile().exists()) {
+            root.toFile().mkdirs();
+        }
     }
 
     @Override
