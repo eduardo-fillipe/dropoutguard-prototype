@@ -4,6 +4,7 @@ import br.ufs.dcomp.dropoutguard.domain.storage.FileObject;
 import br.ufs.dcomp.dropoutguard.domain.storage.StorageComponent;
 import br.ufs.dcomp.dropoutguard.domain.storage.exception.FileNotFoundException;
 import br.ufs.dcomp.dropoutguard.domain.storage.exception.ObjectIsNotAFileException;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
 import java.io.*;
@@ -14,12 +15,8 @@ public class LocalStorageComponentImpl implements StorageComponent {
 
     private final Path root;
 
-    public LocalStorageComponentImpl() {
-        this.root = Path.of(System.getProperty("user.dir"));
-    }
-
-    public LocalStorageComponentImpl(Path rootPath) {
-        this.root = rootPath;
+    public LocalStorageComponentImpl(@Value("${dropoutguard.infrastructure.storage.local.root-path}#{null}") String rootPath) {
+        this.root = rootPath == null ? Path.of(System.getProperty("user.dir")) : Path.of(rootPath);
     }
 
     @Override

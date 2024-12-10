@@ -2,6 +2,7 @@ package br.ufs.dcomp.dropoutguard.unit.infrastructure.event.knowledgedatabase;
 
 import br.ufs.dcomp.dropoutguard.domain.event.EventMessage;
 import br.ufs.dcomp.dropoutguard.domain.knowledgedatabase.KnowledgeDatabase;
+import br.ufs.dcomp.dropoutguard.domain.knowledgedatabase.KnowledgeDatabaseEventDTO;
 import br.ufs.dcomp.dropoutguard.infrastructure.event.KnowledgeDatabaseEventMessagePublisher;
 import br.ufs.dcomp.dropoutguard.unit.UnitTest;
 import org.junit.jupiter.api.Assertions;
@@ -23,7 +24,9 @@ public class KnowledgeDatabaseEventPublisherTest {
                     .registerFileLocation("test")
                     .description("test")
                     .build();
-            String routingKey = publisher.getRoutingKey(new EventMessage<>("test", knowledgeDatabase));
+
+
+            String routingKey = publisher.getRoutingKey(new EventMessage<>("test", KnowledgeDatabaseEventDTO.of(knowledgeDatabase)));
 
             Assertions.assertEquals("dropoutguard.knowledgedatabase.update.update_requested", routingKey);
         }

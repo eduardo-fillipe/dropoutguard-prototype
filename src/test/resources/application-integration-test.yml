@@ -9,3 +9,8 @@ spring:
     main:
         banner-mode: off
 
+dropoutguard:
+    infrastructure:
+        storage:
+            local:
+                root-path: src/test/java/br/ufs/dcomp/dropoutguard/integration
