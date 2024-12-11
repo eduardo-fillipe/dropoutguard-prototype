@@ -15,3 +15,9 @@ spring:
         locations: classpath:db/migration
     rabbitmq:
         host: localhost
+
+dropoutguard:
+    infrastructure:
+        storage:
+            local:
+                root-path: /home/eduardo/dropoutguard/storage-root

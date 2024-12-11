@@ -72,7 +72,7 @@ public class RequestKnowledgeDatabaseUpdateUseCaseTest {
     void testShouldRequestUpdate() throws IOException {
         // Arrange
         RequestUpdateParams params = new RequestUpdateParams("name", "description", "reason",
-                List.of(new Register("1"), new Register("2")));
+                List.of(Register.of("1"), Register.of("1")));
 
         // Execute
         RequestUpdateResultDTO result = useCase.execute(params);

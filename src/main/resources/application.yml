@@ -15,5 +15,12 @@ spring:
 dropoutguard:
     infrastructure:
         knowledge-database:
+            entrypoint:
+                receive-status-update-listener:
+                    queue-name: receive-knowledge-database-status-update-queue
+                    concurrence: 5
             event:
                 topic-name: KnowledgeDatabaseEventsTopic
+        storage:
+            local:
+                root-path: src/test/java/br/ufs/dcomp/dropoutguard/integration

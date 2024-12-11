@@ -1,8 +1,11 @@
 package br.ufs.dcomp.dropoutguard.domain.knowledgedatabase;
 
+import lombok.Builder;
+
 import java.io.Serializable;
 import java.time.ZonedDateTime;
 
+@Builder(toBuilder = true)
 public record KnowledgeDatabaseEventDTO(
         String id,
         String name,
