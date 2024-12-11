@@ -19,5 +19,16 @@ CREATE TABLE intelligence_hub.student
     CONSTRAINT pk_student PRIMARY KEY (id)
 );
 
+CREATE TABLE intelligence_hub.knowledge_database_register_progress
+(
+    register              VARCHAR(255)                NOT NULL,
+    knowledge_database_id VARCHAR(255)                NOT NULL,
+    status                SMALLINT                    NOT NULL,
+    error                 VARCHAR(255),
+    created_at            TIMESTAMP WITHOUT TIME ZONE NOT NULL,
+    last_modified         TIMESTAMP WITHOUT TIME ZONE NOT NULL,
+    CONSTRAINT pk_knowledge_database_register_progress PRIMARY KEY (register, knowledge_database_id)
+);
+
 ALTER TABLE intelligence_hub.curriculum
     ADD CONSTRAINT FK_CURRICULUM_ON_STUDENT FOREIGN KEY (student_id) REFERENCES intelligence_hub.student (id);
