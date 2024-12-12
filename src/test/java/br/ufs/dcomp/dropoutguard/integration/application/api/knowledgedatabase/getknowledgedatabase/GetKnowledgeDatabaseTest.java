@@ -6,6 +6,7 @@ import br.ufs.dcomp.dropoutguard.application.api.knowledgedatabase.getknowledged
 import br.ufs.dcomp.dropoutguard.domain.knowledgedatabase.KnowledgeDatabase;
 import br.ufs.dcomp.dropoutguard.domain.knowledgedatabase.KnowledgeDatabaseRepository;
 import br.ufs.dcomp.dropoutguard.domain.knowledgedatabase.exception.KnowledgeDatabaseNotFoundException;
+import br.ufs.dcomp.dropoutguard.integration.AbstractContainerIntegrationTest;
 import br.ufs.dcomp.dropoutguard.integration.IntegrationTest;
 import jakarta.transaction.Transactional;
 import org.junit.jupiter.api.Test;
@@ -22,7 +23,7 @@ import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 
 @IntegrationTest
-public class GetKnowledgeDatabaseTest {
+public class GetKnowledgeDatabaseTest extends AbstractContainerIntegrationTest {
 
     @Autowired
     @MockitoSpyBean

@@ -3,6 +3,7 @@ package br.ufs.dcomp.dropoutguard.integration.domain.curriculum.extractor;
 import br.ufs.dcomp.dropoutguard.domain.curriculum.extractor.CurriculumFields;
 import br.ufs.dcomp.dropoutguard.domain.curriculum.extractor.SIGAACurriculumExtractor;
 import br.ufs.dcomp.dropoutguard.domain.storage.FileObject;
+import br.ufs.dcomp.dropoutguard.integration.AbstractContainerIntegrationTest;
 import br.ufs.dcomp.dropoutguard.integration.IntegrationTest;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -14,7 +15,7 @@ import java.math.BigDecimal;
 import static org.assertj.core.api.Assertions.assertThat;
 
 @IntegrationTest
-public class SIGAACurriculumExtractorTest {
+public class SIGAACurriculumExtractorTest extends AbstractContainerIntegrationTest {
 
     @Autowired
     SIGAACurriculumExtractor extractor;

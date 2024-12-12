@@ -6,7 +6,6 @@ import br.ufs.dcomp.dropoutguard.domain.curriculum.exception.CurriculumNotFoundE
 import br.ufs.dcomp.dropoutguard.domain.storage.FileObject;
 import br.ufs.dcomp.dropoutguard.domain.storage.StorageComponent;
 import br.ufs.dcomp.dropoutguard.domain.storage.exception.FileNotFoundException;
-import com.fasterxml.jackson.core.JsonProcessingException;
 import lombok.SneakyThrows;
 import org.springframework.stereotype.Component;
 
@@ -20,7 +19,7 @@ public class DummySIGAADownloader implements SIGAACurriculumDownloader {
     }
 
     @Override
-    @SneakyThrows({InterruptedException.class, JsonProcessingException.class})
+    @SneakyThrows(InterruptedException.class)
     public FileObject download(Register register) throws CurriculumNotFoundException {
         try {
             Thread.sleep(2000);

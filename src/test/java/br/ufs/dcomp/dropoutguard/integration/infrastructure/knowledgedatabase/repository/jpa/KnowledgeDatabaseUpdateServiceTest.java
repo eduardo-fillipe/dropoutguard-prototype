@@ -5,6 +5,7 @@ import br.ufs.dcomp.dropoutguard.domain.knowledgedatabase.update.KnowledgeDataba
 import br.ufs.dcomp.dropoutguard.infrastructure.knowledgedatabase.repository.jpa.KnowledgeDatabaseRegisterProgressEntity;
 import br.ufs.dcomp.dropoutguard.infrastructure.knowledgedatabase.repository.jpa.KnowledgeDatabaseUpdateProgressJpaRepository;
 import br.ufs.dcomp.dropoutguard.infrastructure.knowledgedatabase.repository.jpa.KnowledgeDatabaseUpdateServiceProgress;
+import br.ufs.dcomp.dropoutguard.integration.AbstractContainerIntegrationTest;
 import br.ufs.dcomp.dropoutguard.integration.IntegrationTest;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Nested;
@@ -18,7 +19,7 @@ import java.util.List;
 import static org.assertj.core.api.Assertions.assertThat;
 
 @IntegrationTest
-public class KnowledgeDatabaseUpdateServiceTest {
+public class KnowledgeDatabaseUpdateServiceTest extends AbstractContainerIntegrationTest {
     @Autowired
     private KnowledgeDatabaseUpdateProgressJpaRepository repository;
 

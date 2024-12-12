@@ -1,6 +1,7 @@
 package br.ufs.dcomp.dropoutguard.integration.infrastructure.event.rabbitmq;
 
 import br.ufs.dcomp.dropoutguard.infrastructure.event.rabbitmq.RabbitMQPublisher;
+import br.ufs.dcomp.dropoutguard.integration.AbstractContainerIntegrationTest;
 import br.ufs.dcomp.dropoutguard.integration.IntegrationTest;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
@@ -15,7 +16,7 @@ import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 
 @IntegrationTest
-public class RabbitMQPublisherIntegrationTest {
+public class RabbitMQPublisherIntegrationTest extends AbstractContainerIntegrationTest {
 
     @Autowired
     @MockitoSpyBean

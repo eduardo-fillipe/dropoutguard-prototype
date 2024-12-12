@@ -2,6 +2,7 @@ package br.ufs.dcomp.dropoutguard.integration.infrastructure.event.rabbitmq;
 
 import br.ufs.dcomp.dropoutguard.domain.event.enqueuer.KnowledgeDatabaseUpdateJobDTO;
 import br.ufs.dcomp.dropoutguard.infrastructure.event.rabbitmq.RabbitMqUpdateJobEnqueuer;
+import br.ufs.dcomp.dropoutguard.integration.AbstractContainerIntegrationTest;
 import br.ufs.dcomp.dropoutguard.integration.IntegrationTest;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.BeforeAll;
@@ -20,7 +21,7 @@ import java.io.IOException;
 import static org.assertj.core.api.Assertions.assertThat;
 
 @IntegrationTest
-public class RabbitMqUpdateJobEnqueuerTest {
+public class RabbitMqUpdateJobEnqueuerTest extends AbstractContainerIntegrationTest {
 
     @TestConfiguration
     public static class Config {

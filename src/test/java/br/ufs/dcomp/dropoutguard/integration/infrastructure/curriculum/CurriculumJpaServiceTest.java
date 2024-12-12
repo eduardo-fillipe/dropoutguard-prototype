@@ -4,8 +4,8 @@ import br.ufs.dcomp.dropoutguard.domain.curriculum.Curriculum;
 import br.ufs.dcomp.dropoutguard.domain.curriculum.Register;
 import br.ufs.dcomp.dropoutguard.domain.curriculum.Student;
 import br.ufs.dcomp.dropoutguard.infrastructure.curriculum.repository.jpa.*;
+import br.ufs.dcomp.dropoutguard.integration.AbstractContainerIntegrationTest;
 import br.ufs.dcomp.dropoutguard.integration.IntegrationTest;
-import jakarta.persistence.EntityManager;
 import jakarta.transaction.Transactional;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
@@ -23,7 +23,7 @@ import java.util.UUID;
 import static org.assertj.core.api.Assertions.assertThat;
 
 @IntegrationTest
-public class CurriculumJpaServiceTest {
+public class CurriculumJpaServiceTest extends AbstractContainerIntegrationTest {
 
     @Autowired
     @MockitoSpyBean

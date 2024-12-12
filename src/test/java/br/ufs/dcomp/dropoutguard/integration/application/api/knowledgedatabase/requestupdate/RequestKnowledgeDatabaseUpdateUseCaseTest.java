@@ -9,6 +9,7 @@ import br.ufs.dcomp.dropoutguard.domain.knowledgedatabase.KnowledgeDatabaseEvent
 import br.ufs.dcomp.dropoutguard.domain.knowledgedatabase.KnowledgeDatabaseRepository;
 import br.ufs.dcomp.dropoutguard.domain.knowledgedatabase.KnowledgeDatabaseStatus;
 import br.ufs.dcomp.dropoutguard.domain.storage.StorageComponent;
+import br.ufs.dcomp.dropoutguard.integration.AbstractContainerIntegrationTest;
 import br.ufs.dcomp.dropoutguard.integration.IntegrationTest;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -33,7 +34,7 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
 @IntegrationTest
-public class RequestKnowledgeDatabaseUpdateUseCaseTest {
+public class RequestKnowledgeDatabaseUpdateUseCaseTest extends AbstractContainerIntegrationTest {
 
     @Value("${dropoutguard.infrastructure.storage.local.root-path}")
     private String rootPath;

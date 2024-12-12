@@ -6,6 +6,7 @@ import br.ufs.dcomp.dropoutguard.domain.knowledgedatabase.KnowledgeDatabase;
 import br.ufs.dcomp.dropoutguard.domain.knowledgedatabase.KnowledgeDatabaseEventDTO;
 import br.ufs.dcomp.dropoutguard.domain.knowledgedatabase.KnowledgeDatabaseRepository;
 import br.ufs.dcomp.dropoutguard.domain.knowledgedatabase.KnowledgeDatabaseStatus;
+import br.ufs.dcomp.dropoutguard.integration.AbstractContainerIntegrationTest;
 import br.ufs.dcomp.dropoutguard.integration.IntegrationTest;
 import jakarta.transaction.Transactional;
 import org.junit.jupiter.api.Test;
@@ -16,7 +17,7 @@ import java.util.UUID;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
 @IntegrationTest
-public class ReceiveKnowledgeDatabaseStatusUpdateIntegrationTest {
+public class ReceiveKnowledgeDatabaseStatusUpdateIntegrationTest extends AbstractContainerIntegrationTest {
 
     @Autowired
     private KnowledgeDatabaseRepository repository;
