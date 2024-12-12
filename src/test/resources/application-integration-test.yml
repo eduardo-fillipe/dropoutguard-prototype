@@ -11,6 +11,7 @@ spring:
         locations: classpath:db/migration
     main:
         banner-mode: off
+        allow-bean-definition-overriding: true
 
 dropoutguard:
     infrastructure:

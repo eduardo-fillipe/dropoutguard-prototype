@@ -1,7 +1,7 @@
 package br.ufs.dcomp.dropoutguard.infrastructure.knowledgedatabase.repository.jpa;
 
 import br.ufs.dcomp.dropoutguard.domain.curriculum.Register;
-import br.ufs.dcomp.dropoutguard.domain.knowledgedatabase.KnowledgeDatabaseRegisterProgress;
+import br.ufs.dcomp.dropoutguard.domain.knowledgedatabase.update.KnowledgeDatabaseUpdateJob;
 import br.ufs.dcomp.dropoutguard.domain.knowledgedatabase.RegisterUpdateStatus;
 import jakarta.persistence.*;
 import lombok.Getter;
@@ -38,17 +38,17 @@ public class KnowledgeDatabaseRegisterProgressEntity {
     @Column(name = "last_modified", nullable = false)
     private ZonedDateTime lastModified;
 
-    public KnowledgeDatabaseRegisterProgressEntity(KnowledgeDatabaseRegisterProgress knowledgeDatabaseRegisterProgress) {
-        this.register = knowledgeDatabaseRegisterProgress.register().getRegisterNumber();
-        this.knowledgeDatabaseId = knowledgeDatabaseRegisterProgress.knowledgeDatabaseId();
-        this.status = knowledgeDatabaseRegisterProgress.status();
-        this.error = knowledgeDatabaseRegisterProgress.error();
-        this.createdAt = knowledgeDatabaseRegisterProgress.createdAt();
-        this.lastModified = knowledgeDatabaseRegisterProgress.lastModified();
+    public KnowledgeDatabaseRegisterProgressEntity(KnowledgeDatabaseUpdateJob updateKnowledgeDatabaseJobProgress) {
+        this.register = updateKnowledgeDatabaseJobProgress.register().getRegisterNumber();
+        this.knowledgeDatabaseId = updateKnowledgeDatabaseJobProgress.knowledgeDatabaseId();
+        this.status = updateKnowledgeDatabaseJobProgress.status();
+        this.error = updateKnowledgeDatabaseJobProgress.error();
+        this.createdAt = updateKnowledgeDatabaseJobProgress.createdAt();
+        this.lastModified = updateKnowledgeDatabaseJobProgress.lastModified();
     }
 
-    public KnowledgeDatabaseRegisterProgress toDomain() {
-        return new KnowledgeDatabaseRegisterProgress(
+    public KnowledgeDatabaseUpdateJob toDomain() {
+        return new KnowledgeDatabaseUpdateJob(
                 Register.of(this.register),
                 this.knowledgeDatabaseId,
                 this.status,

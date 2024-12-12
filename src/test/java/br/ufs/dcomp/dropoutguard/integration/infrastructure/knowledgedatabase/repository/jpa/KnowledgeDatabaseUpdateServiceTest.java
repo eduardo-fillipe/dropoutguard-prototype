@@ -1,10 +1,10 @@
 package br.ufs.dcomp.dropoutguard.integration.infrastructure.knowledgedatabase.repository.jpa;
 
 import br.ufs.dcomp.dropoutguard.domain.curriculum.Register;
-import br.ufs.dcomp.dropoutguard.domain.knowledgedatabase.KnowledgeDatabaseRegisterProgress;
+import br.ufs.dcomp.dropoutguard.domain.knowledgedatabase.update.KnowledgeDatabaseUpdateJob;
 import br.ufs.dcomp.dropoutguard.infrastructure.knowledgedatabase.repository.jpa.KnowledgeDatabaseRegisterProgressEntity;
 import br.ufs.dcomp.dropoutguard.infrastructure.knowledgedatabase.repository.jpa.KnowledgeDatabaseUpdateProgressJpaRepository;
-import br.ufs.dcomp.dropoutguard.infrastructure.knowledgedatabase.repository.jpa.KnowledgeDatabaseUpdateService;
+import br.ufs.dcomp.dropoutguard.infrastructure.knowledgedatabase.repository.jpa.KnowledgeDatabaseUpdateServiceProgress;
 import br.ufs.dcomp.dropoutguard.integration.IntegrationTest;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Nested;
@@ -23,7 +23,7 @@ public class KnowledgeDatabaseUpdateServiceTest {
     private KnowledgeDatabaseUpdateProgressJpaRepository repository;
 
     @Autowired
-    private KnowledgeDatabaseUpdateService service;
+    private KnowledgeDatabaseUpdateServiceProgress service;
 
     @BeforeEach
     void beforeEach() {
@@ -35,17 +35,17 @@ public class KnowledgeDatabaseUpdateServiceTest {
         @Test
         public void shouldSaveAll() {
             // ARRANGE
-            List<KnowledgeDatabaseRegisterProgress> expected = List.of(
-                    new KnowledgeDatabaseRegisterProgress(Register.of("1"), "1"),
-                    new KnowledgeDatabaseRegisterProgress(Register.of("2"), "1"),
-                    new KnowledgeDatabaseRegisterProgress(Register.of("3"), "1")
+            List<KnowledgeDatabaseUpdateJob> expected = List.of(
+                    new KnowledgeDatabaseUpdateJob(Register.of("1"), "1"),
+                    new KnowledgeDatabaseUpdateJob(Register.of("2"), "1"),
+                    new KnowledgeDatabaseUpdateJob(Register.of("3"), "1")
             );
 
             // ACT
             service.saveAll(expected);
 
             // ASSERT
-            List<KnowledgeDatabaseRegisterProgress> actual = repository
+            List<KnowledgeDatabaseUpdateJob> actual = repository
                     .findAll().stream()
                     .map(KnowledgeDatabaseRegisterProgressEntity::toDomain)
                     .toList();
@@ -58,18 +58,18 @@ public class KnowledgeDatabaseUpdateServiceTest {
 
         @Test
         public void shouldNotSaveDuplicates() {
-            List<KnowledgeDatabaseRegisterProgress> original = List.of(
-                    new KnowledgeDatabaseRegisterProgress(Register.of("1"), "1"),
-                    new KnowledgeDatabaseRegisterProgress(Register.of("1"), "1"),
-                    new KnowledgeDatabaseRegisterProgress(Register.of("1"), "1"),
-                    new KnowledgeDatabaseRegisterProgress(Register.of("1"), "2")
+            List<KnowledgeDatabaseUpdateJob> original = List.of(
+                    new KnowledgeDatabaseUpdateJob(Register.of("1"), "1"),
+                    new KnowledgeDatabaseUpdateJob(Register.of("1"), "1"),
+                    new KnowledgeDatabaseUpdateJob(Register.of("1"), "1"),
+                    new KnowledgeDatabaseUpdateJob(Register.of("1"), "2")
             );
 
             // ACT
             service.saveAll(original);
 
             // ASSERT
-            List<KnowledgeDatabaseRegisterProgress> actual = repository
+            List<KnowledgeDatabaseUpdateJob> actual = repository
                     .findAll().stream()
                     .map(KnowledgeDatabaseRegisterProgressEntity::toDomain)
                     .toList();
