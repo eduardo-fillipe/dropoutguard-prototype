@@ -11,6 +11,7 @@ public record KnowledgeDatabaseUpdateJobDTO (
      String knowledgeDatabaseId
 ) implements Serializable {
     public KnowledgeDatabaseUpdateJobDTO(KnowledgeDatabaseUpdateJob knowledgeDatabaseUpdateJob) {
-        this(knowledgeDatabaseUpdateJob.register().getRegisterNumber(), knowledgeDatabaseUpdateJob.knowledgeDatabaseId());
+        this(knowledgeDatabaseUpdateJob.getRegister().getRegisterNumber(),
+                knowledgeDatabaseUpdateJob.getKnowledgeDatabaseId());
     }
 }

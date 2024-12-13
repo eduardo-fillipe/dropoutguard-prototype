@@ -2,10 +2,12 @@ package br.ufs.dcomp.dropoutguard.infrastructure.curriculum.extractor.fieldextra
 
 import br.ufs.dcomp.dropoutguard.domain.curriculum.extractor.CurriculumFields;
 import br.ufs.dcomp.dropoutguard.domain.curriculum.extractor.SIGAAFieldExtractor;
+import br.ufs.dcomp.dropoutguard.infrastructure.Dummy;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.SneakyThrows;
 import org.springframework.stereotype.Component;
 
+@Dummy
 @Component
 public class DummyStudentNameFieldExtractor implements SIGAAFieldExtractor {
     private final ObjectMapper mapper;

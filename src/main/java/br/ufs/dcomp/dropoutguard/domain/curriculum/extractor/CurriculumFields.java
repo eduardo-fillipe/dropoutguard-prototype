@@ -1,9 +1,6 @@
 package br.ufs.dcomp.dropoutguard.domain.curriculum.extractor;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import java.math.BigDecimal;
 
@@ -11,7 +8,8 @@ import java.math.BigDecimal;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public final class CurriculumFields {
+@Builder
+public class CurriculumFields {
     private String schoolRegister;
     private String studentName;
     private String studentDocument;

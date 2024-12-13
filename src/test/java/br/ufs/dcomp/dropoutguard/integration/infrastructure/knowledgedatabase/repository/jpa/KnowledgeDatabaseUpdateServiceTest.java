@@ -77,8 +77,8 @@ public class KnowledgeDatabaseUpdateServiceTest extends AbstractContainerIntegra
 
             assertThat(actual.size()).isEqualTo(2);
             assertThat(actual.stream()
-                    .allMatch(o -> (o.knowledgeDatabaseId().equals("1") && o.register().getRegisterNumber().equals("1")
-                            || (o.knowledgeDatabaseId().equals("2") && o.register().getRegisterNumber().equals("1")))
+                    .allMatch(o -> (o.getKnowledgeDatabaseId().equals("1") && o.getRegister().getRegisterNumber().equals("1")
+                            || (o.getKnowledgeDatabaseId().equals("2") && o.getRegister().getRegisterNumber().equals("1")))
                     )).isTrue();
         }
     }

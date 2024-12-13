@@ -13,7 +13,7 @@ public abstract class AbstractContainerIntegrationTest {
     );
 
     static RabbitMQContainer rabbitContainer = new RabbitMQContainer(
-            DockerImageName.parse("rabbitmq:4.0.3-management-alpine")
+            DockerImageName.parse("rabbitmq:4.0.3-alpine")
     );
 
     @DynamicPropertySource

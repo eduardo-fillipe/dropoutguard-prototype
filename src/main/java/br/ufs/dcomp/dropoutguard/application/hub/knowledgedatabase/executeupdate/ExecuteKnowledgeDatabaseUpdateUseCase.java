@@ -2,6 +2,7 @@ package br.ufs.dcomp.dropoutguard.application.hub.knowledgedatabase.executeupdat
 
 import br.ufs.dcomp.dropoutguard.application.UseCase;
 import br.ufs.dcomp.dropoutguard.domain.curriculum.Register;
+import br.ufs.dcomp.dropoutguard.domain.curriculum.Student;
 import br.ufs.dcomp.dropoutguard.domain.event.EventMessage;
 import br.ufs.dcomp.dropoutguard.domain.event.EventPublisher;
 import br.ufs.dcomp.dropoutguard.domain.knowledgedatabase.KnowledgeDatabaseEventDTO;
@@ -33,11 +34,14 @@ public class ExecuteKnowledgeDatabaseUpdateUseCase {
     }
 
     @Transactional
-    public void execute(KnowledgeDatabaseEventDTO knowledgeDatabaseEventDTO) {
+    public void execute(KnowledgeDatabaseEventDTO eventDTO) {
         try {
             log.info("Executing knowledge database update");
 
-            List<KnowledgeDatabaseUpdateJob> registerProgressList = getRegisterList(knowledgeDatabaseEventDTO).stream().map(registerNumber -> new KnowledgeDatabaseUpdateJob(Register.of(registerNumber), knowledgeDatabaseEventDTO.id())).toList();
+            List<KnowledgeDatabaseUpdateJob> registerProgressList = getRegisterList(eventDTO)
+                    .stream()
+                    .map(register -> new KnowledgeDatabaseUpdateJob(Register.of(register), eventDTO.id()))
+                    .toList();
 
             progressRepository.saveAll(registerProgressList);
             log.info("Executed knowledge database progress insertions");
@@ -46,7 +50,7 @@ public class ExecuteKnowledgeDatabaseUpdateUseCase {
             log.info("Executed knowledge database job enqueuing");
 
             eventPublisher.publish(EventMessage.<KnowledgeDatabaseEventDTO>builder()
-                    .payload(knowledgeDatabaseEventDTO.toBuilder()
+                    .payload(eventDTO.toBuilder()
                             .status(KnowledgeDatabaseStatus.UPDATING)
                             .build()
                     ).subject(KnowledgeDatabaseStatus.UPDATING.toString().toLowerCase())
@@ -54,7 +58,7 @@ public class ExecuteKnowledgeDatabaseUpdateUseCase {
             );
         } catch (Exception e) {
             eventPublisher.publish(EventMessage.<KnowledgeDatabaseEventDTO>builder()
-                    .payload(knowledgeDatabaseEventDTO.toBuilder()
+                    .payload(eventDTO.toBuilder()
                             .status(KnowledgeDatabaseStatus.UPDATE_ERROR)
                             .build()
                     ).subject(KnowledgeDatabaseStatus.UPDATE_ERROR.toString().toLowerCase())

@@ -6,6 +6,7 @@ import jakarta.transaction.Transactional;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.Optional;
 
 @Repository
 public class KnowledgeDatabaseUpdateServiceProgress implements KnowledgeDatabaseUpdateJobProgressRepository {
@@ -23,5 +24,19 @@ public class KnowledgeDatabaseUpdateServiceProgress implements KnowledgeDatabase
                 .map(KnowledgeDatabaseRegisterProgressEntity::new)
                 .toList()
         );
+    }
+
+    @Override
+    public KnowledgeDatabaseUpdateJob save(KnowledgeDatabaseUpdateJob updateKnowledgeDatabaseJobProgress) {
+        return this.repository
+                .save(new KnowledgeDatabaseRegisterProgressEntity(updateKnowledgeDatabaseJobProgress))
+                .toDomain();
+    }
+
+    @Override
+    public Optional<KnowledgeDatabaseUpdateJob> find(String knowledgeDatabaseId, String registerNumber) {
+        return this.repository
+                .findById(new KnowledgeDatabaseRegisterProgressEntityId(knowledgeDatabaseId, registerNumber))
+                .map(KnowledgeDatabaseRegisterProgressEntity::toDomain);
     }
 }

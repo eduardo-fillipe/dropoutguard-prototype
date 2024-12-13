@@ -39,12 +39,12 @@ public class KnowledgeDatabaseRegisterProgressEntity {
     private ZonedDateTime lastModified;
 
     public KnowledgeDatabaseRegisterProgressEntity(KnowledgeDatabaseUpdateJob updateKnowledgeDatabaseJobProgress) {
-        this.register = updateKnowledgeDatabaseJobProgress.register().getRegisterNumber();
-        this.knowledgeDatabaseId = updateKnowledgeDatabaseJobProgress.knowledgeDatabaseId();
-        this.status = updateKnowledgeDatabaseJobProgress.status();
-        this.error = updateKnowledgeDatabaseJobProgress.error();
-        this.createdAt = updateKnowledgeDatabaseJobProgress.createdAt();
-        this.lastModified = updateKnowledgeDatabaseJobProgress.lastModified();
+        this.register = updateKnowledgeDatabaseJobProgress.getRegister().getRegisterNumber();
+        this.knowledgeDatabaseId = updateKnowledgeDatabaseJobProgress.getKnowledgeDatabaseId();
+        this.status = updateKnowledgeDatabaseJobProgress.getStatus();
+        this.error = updateKnowledgeDatabaseJobProgress.getError();
+        this.createdAt = updateKnowledgeDatabaseJobProgress.getCreatedAt();
+        this.lastModified = updateKnowledgeDatabaseJobProgress.getLastModified();
     }
 
     public KnowledgeDatabaseUpdateJob toDomain() {

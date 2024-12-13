@@ -2,6 +2,7 @@ package br.ufs.dcomp.dropoutguard.infrastructure.knowledgedatabase.entrypoint;
 
 import br.ufs.dcomp.dropoutguard.domain.event.EventMessage;
 import br.ufs.dcomp.dropoutguard.domain.event.enqueuer.KnowledgeDatabaseUpdateJobDTO;
+import br.ufs.dcomp.dropoutguard.domain.knowledgedatabase.update.KnowledgeDatabaseUpdateWorker;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -20,9 +21,11 @@ import java.io.IOException;
 @Component
 public class ExecuteKnowledgeDatabaseUpdateJobListener {
     private final ObjectMapper mapper;
+    private final KnowledgeDatabaseUpdateWorker worker;
 
-    public ExecuteKnowledgeDatabaseUpdateJobListener(ObjectMapper mapper) {
+    public ExecuteKnowledgeDatabaseUpdateJobListener(ObjectMapper mapper, KnowledgeDatabaseUpdateWorker worker) {
         this.mapper = mapper;
+        this.worker = worker;
     }
 
     @RabbitListener(
@@ -36,10 +39,11 @@ public class ExecuteKnowledgeDatabaseUpdateJobListener {
     @SneakyThrows(JsonProcessingException.class)
     void receive(String message, Channel channel, @Header(AmqpHeaders.DELIVERY_TAG) long tag) throws IOException {
         try {
-            EventMessage<KnowledgeDatabaseUpdateJobDTO> eventMessage = mapper.readValue(message, new TypeReference<>() {});
-            log.info("Received knowledge database update job {}", mapper.writeValueAsString(eventMessage));
+            log.info("Received knowledge database update job {}", message);
 
-            Thread.sleep(10000);
+            EventMessage<KnowledgeDatabaseUpdateJobDTO> eventMessage = mapper.readValue(message, new TypeReference<>() {});
+
+            worker.doWork(eventMessage.getPayload());
 
             log.info("Finished processing job {}", mapper.writeValueAsString(eventMessage));
             channel.basicAck(tag, false);
