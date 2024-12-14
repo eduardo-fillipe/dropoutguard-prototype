@@ -22,6 +22,11 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Optional;
 
+/**
+ * Worker component responsible for executing updates to the Knowledge Database.
+ * Processes job DTOs to fetch, transform, and persist curriculum information in the database,
+ * while handling errors and publishing events as necessary.
+ */
 @Slf4j
 @Component
 public class KnowledgeDatabaseUpdateWorker {
@@ -44,6 +49,13 @@ public class KnowledgeDatabaseUpdateWorker {
         this.eventPublisher = eventPublisher;
     }
 
+    /**
+     * Processes a knowledge database update job. Downloads and extracts curriculum data
+     * based on the provided job DTO, persists the data, and updates the job status.
+     * If all jobs for a knowledge database are processed, an update event is published.
+     *
+     * @param jobDTO the job DTO containing the information required for processing
+     */
     @Transactional(isolation = Isolation.REPEATABLE_READ)
     public void doWork(KnowledgeDatabaseUpdateJobDTO jobDTO) {
         log.info("Starting update job {}", jobDTO);

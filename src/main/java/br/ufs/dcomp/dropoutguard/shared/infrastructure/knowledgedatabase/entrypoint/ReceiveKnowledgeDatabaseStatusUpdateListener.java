@@ -16,6 +16,10 @@ import org.springframework.stereotype.Component;
 
 import java.io.IOException;
 
+/**
+ * Listener class that handles status updates for the knowledge database from a message queue.
+ * The messages are deserialized, logged, and processed using the provided use case.
+ */
 @Component
 @Slf4j
 public class ReceiveKnowledgeDatabaseStatusUpdateListener {

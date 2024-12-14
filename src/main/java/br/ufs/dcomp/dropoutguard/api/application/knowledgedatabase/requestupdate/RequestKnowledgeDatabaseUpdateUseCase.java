@@ -21,6 +21,17 @@ import java.util.stream.Collectors;
 
 @Slf4j
 @UseCase
+/**
+ * Use case for handling knowledge database update requests.
+ * <p>
+ * This class is responsible for creating and saving a new knowledge database, storing the register file in a storage
+ * component, and publishing an event to notify other components about the update.
+ * </p>
+ * It performs the following functions:
+ * 1. Saves the register file data into the specified storage component.
+ * 2. Creates and persists the KnowledgeDatabase entity.
+ * 3. Publishes an event with details of the created entity.
+ */
 public class RequestKnowledgeDatabaseUpdateUseCase {
 
     private final KnowledgeDatabaseRepository knowledgeDatabaseRepository;
@@ -41,6 +52,20 @@ public class RequestKnowledgeDatabaseUpdateUseCase {
         this.objectMapper = objectMapper;
     }
 
+    /**
+     * Executes a request to update the knowledge database.
+     * <p>
+     * This method processes the provided request update parameters and performs the following operations:
+     * 1. Stores the register list data in the storage component.
+     * 2. Creates and persists a KnowledgeDatabase instance using the input parameters.
+     * 3. Publishes an event containing the details of the created KnowledgeDatabase entity.
+     * </p>
+     *
+     * @param params the parameters for the knowledge database update request.
+     *               It includes register data, database name, description, and reason for the update.
+     * @return an instance of {@link RequestUpdateResultDTO} containing details of the created KnowledgeDatabase.
+     * @throws JsonProcessingException if an error occurs during JSON processing.
+     */
     @Transactional
     @SneakyThrows(JsonProcessingException.class)
     public RequestUpdateResultDTO execute(@NonNull RequestUpdateParams params) {

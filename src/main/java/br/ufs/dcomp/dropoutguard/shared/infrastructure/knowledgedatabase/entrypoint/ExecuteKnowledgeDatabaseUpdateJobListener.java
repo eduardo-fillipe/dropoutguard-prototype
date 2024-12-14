@@ -17,6 +17,10 @@ import org.springframework.stereotype.Component;
 
 import java.io.IOException;
 
+/**
+ * Listener class responsible for processing knowledge database update jobs received via RabbitMQ.
+ * It listens to a specific queue and invokes a worker to process the job, ensuring acknowledgment of the message.
+ */
 @Slf4j
 @Component
 public class ExecuteKnowledgeDatabaseUpdateJobListener {

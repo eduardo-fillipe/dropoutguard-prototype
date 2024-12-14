@@ -15,6 +15,10 @@ import java.util.Optional;
 
 @UseCase
 @Slf4j
+/**
+ * Use case for handling and processing knowledge database status update events.
+ * It validates the updates, applies them to the associated database entity, and persists them.
+ */
 public class ReceiveKnowledgeDatabaseStatusUpdateUseCase {
     private final KnowledgeDatabaseRepository repository;
     private final ObjectMapper mapper;
@@ -24,6 +28,12 @@ public class ReceiveKnowledgeDatabaseStatusUpdateUseCase {
         this.mapper = mapper;
     }
 
+    /**
+     * Handles and processes a knowledge database status update event.
+     *
+     * @param params The event message containing the update details, including the knowledge database ID
+     *               and the status payload.
+     */
     @Transactional
     @SneakyThrows(JsonProcessingException.class)
     public void execute(EventMessage<KnowledgeDatabaseEventDTO> params) {
@@ -45,6 +55,13 @@ public class ReceiveKnowledgeDatabaseStatusUpdateUseCase {
         log.info("Updated knowledge database {}", mapper.writeValueAsString(existingKnowledgeDatabase.get()));
     }
 
+    /**
+     * Validates whether the provided update is valid for the existing knowledge database entity.
+     *
+     * @param existingKnowledgeDatabase The existing knowledge database entity to compare against.
+     * @param updatedKnowledgeDatabase The knowledge database entity with the updated status.
+     * @return {@code true} if the update is valid; otherwise, {@code false}.
+     */
     private boolean validateIfUpdateIsValid(Optional<KnowledgeDatabase> existingKnowledgeDatabase, KnowledgeDatabase updatedKnowledgeDatabase) {
         if (existingKnowledgeDatabase.isEmpty()) {
             log.info("Skipping database update because knowledge database does not exist");
