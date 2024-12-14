@@ -1,10 +1,10 @@
 package br.ufs.dcomp.dropoutguard.integration.infrastructure.knowledgedatabase.repository.jpa;
 
-import br.ufs.dcomp.dropoutguard.domain.curriculum.Register;
-import br.ufs.dcomp.dropoutguard.domain.knowledgedatabase.update.KnowledgeDatabaseUpdateJob;
-import br.ufs.dcomp.dropoutguard.infrastructure.knowledgedatabase.repository.jpa.KnowledgeDatabaseRegisterProgressEntity;
-import br.ufs.dcomp.dropoutguard.infrastructure.knowledgedatabase.repository.jpa.KnowledgeDatabaseUpdateProgressJpaRepository;
-import br.ufs.dcomp.dropoutguard.infrastructure.knowledgedatabase.repository.jpa.KnowledgeDatabaseUpdateServiceProgress;
+import br.ufs.dcomp.dropoutguard.shared.domain.curriculum.Register;
+import br.ufs.dcomp.dropoutguard.hub.domain.knowledgedatabase.KnowledgeDatabaseUpdateJob;
+import br.ufs.dcomp.dropoutguard.shared.infrastructure.knowledgedatabase.repository.jpa.KnowledgeDatabaseRegisterProgressEntity;
+import br.ufs.dcomp.dropoutguard.shared.infrastructure.knowledgedatabase.repository.jpa.KnowledgeDatabaseUpdateProgressJpaRepository;
+import br.ufs.dcomp.dropoutguard.shared.infrastructure.knowledgedatabase.repository.jpa.KnowledgeDatabaseUpdateServiceProgress;
 import br.ufs.dcomp.dropoutguard.integration.AbstractContainerIntegrationTest;
 import br.ufs.dcomp.dropoutguard.integration.IntegrationTest;
 import org.junit.jupiter.api.BeforeEach;

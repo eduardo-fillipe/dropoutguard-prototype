@@ -1,9 +1,9 @@
 package br.ufs.dcomp.dropoutguard.unit.infrastructure.event.knowledgedatabase;
 
-import br.ufs.dcomp.dropoutguard.domain.event.EventMessage;
-import br.ufs.dcomp.dropoutguard.domain.knowledgedatabase.KnowledgeDatabase;
-import br.ufs.dcomp.dropoutguard.domain.knowledgedatabase.KnowledgeDatabaseEventDTO;
-import br.ufs.dcomp.dropoutguard.infrastructure.event.KnowledgeDatabaseEventMessagePublisher;
+import br.ufs.dcomp.dropoutguard.shared.domain.event.EventMessage;
+import br.ufs.dcomp.dropoutguard.api.domain.knowledgedatabase.KnowledgeDatabase;
+import br.ufs.dcomp.dropoutguard.shared.domain.knowledgedatabase.KnowledgeDatabaseEventDTO;
+import br.ufs.dcomp.dropoutguard.shared.infrastructure.event.KnowledgeDatabaseEventMessagePublisher;
 import br.ufs.dcomp.dropoutguard.unit.UnitTest;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Nested;

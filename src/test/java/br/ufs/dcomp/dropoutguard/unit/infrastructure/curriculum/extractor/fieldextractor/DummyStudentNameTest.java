@@ -1,9 +1,9 @@
 package br.ufs.dcomp.dropoutguard.unit.infrastructure.curriculum.extractor.fieldextractor;
 
 
-import br.ufs.dcomp.dropoutguard.domain.curriculum.extractor.CurriculumFields;
-import br.ufs.dcomp.dropoutguard.domain.curriculum.extractor.SIGAAFieldExtractor;
-import br.ufs.dcomp.dropoutguard.infrastructure.curriculum.extractor.fieldextractor.DummyStudentNameFieldExtractor;
+import br.ufs.dcomp.dropoutguard.hub.domain.curriculum.extractor.CurriculumFields;
+import br.ufs.dcomp.dropoutguard.hub.domain.curriculum.extractor.SIGAAFieldExtractor;
+import br.ufs.dcomp.dropoutguard.shared.infrastructure.curriculum.extractor.fieldextractor.DummyStudentNameFieldExtractor;
 import br.ufs.dcomp.dropoutguard.unit.UnitTest;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;

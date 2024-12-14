@@ -1,10 +1,10 @@
 package br.ufs.dcomp.dropoutguard.unit.application.api.knowledgedatabase.receivestatusupdate;
 
-import br.ufs.dcomp.dropoutguard.application.api.knowledgedatabase.receivestatusupdate.ReceiveKnowledgeDatabaseStatusUpdateUseCase;
-import br.ufs.dcomp.dropoutguard.domain.event.EventMessage;
-import br.ufs.dcomp.dropoutguard.domain.knowledgedatabase.KnowledgeDatabase;
-import br.ufs.dcomp.dropoutguard.domain.knowledgedatabase.KnowledgeDatabaseEventDTO;
-import br.ufs.dcomp.dropoutguard.domain.knowledgedatabase.KnowledgeDatabaseRepository;
+import br.ufs.dcomp.dropoutguard.api.application.knowledgedatabase.receivestatusupdate.ReceiveKnowledgeDatabaseStatusUpdateUseCase;
+import br.ufs.dcomp.dropoutguard.shared.domain.event.EventMessage;
+import br.ufs.dcomp.dropoutguard.api.domain.knowledgedatabase.KnowledgeDatabase;
+import br.ufs.dcomp.dropoutguard.shared.domain.knowledgedatabase.KnowledgeDatabaseEventDTO;
+import br.ufs.dcomp.dropoutguard.api.domain.knowledgedatabase.KnowledgeDatabaseRepository;
 import br.ufs.dcomp.dropoutguard.unit.UnitTest;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;

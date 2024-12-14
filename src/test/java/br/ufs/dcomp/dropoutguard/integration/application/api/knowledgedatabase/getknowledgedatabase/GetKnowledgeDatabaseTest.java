@@ -1,11 +1,11 @@
 package br.ufs.dcomp.dropoutguard.integration.application.api.knowledgedatabase.getknowledgedatabase;
 
-import br.ufs.dcomp.dropoutguard.application.api.knowledgedatabase.getknowledgedatabase.GetKnowledgeDatabaseUseCase;
-import br.ufs.dcomp.dropoutguard.application.api.knowledgedatabase.getknowledgedatabase.GetKnowledgeUseCaseParams;
-import br.ufs.dcomp.dropoutguard.application.api.knowledgedatabase.getknowledgedatabase.GetKnowledgeUseCaseResultDTO;
-import br.ufs.dcomp.dropoutguard.domain.knowledgedatabase.KnowledgeDatabase;
-import br.ufs.dcomp.dropoutguard.domain.knowledgedatabase.KnowledgeDatabaseRepository;
-import br.ufs.dcomp.dropoutguard.domain.knowledgedatabase.exception.KnowledgeDatabaseNotFoundException;
+import br.ufs.dcomp.dropoutguard.api.application.knowledgedatabase.getknowledgedatabase.GetKnowledgeDatabaseUseCase;
+import br.ufs.dcomp.dropoutguard.api.application.knowledgedatabase.getknowledgedatabase.GetKnowledgeUseCaseParams;
+import br.ufs.dcomp.dropoutguard.api.application.knowledgedatabase.getknowledgedatabase.GetKnowledgeUseCaseResultDTO;
+import br.ufs.dcomp.dropoutguard.api.domain.knowledgedatabase.KnowledgeDatabase;
+import br.ufs.dcomp.dropoutguard.api.domain.knowledgedatabase.KnowledgeDatabaseRepository;
+import br.ufs.dcomp.dropoutguard.api.domain.knowledgedatabase.exception.KnowledgeDatabaseNotFoundException;
 import br.ufs.dcomp.dropoutguard.integration.AbstractContainerIntegrationTest;
 import br.ufs.dcomp.dropoutguard.integration.IntegrationTest;
 import jakarta.transaction.Transactional;

@@ -1,6 +1,6 @@
 package br.ufs.dcomp.dropoutguard.integration.infrastructure.event.rabbitmq;
 
-import br.ufs.dcomp.dropoutguard.infrastructure.event.rabbitmq.RabbitMQPublisher;
+import br.ufs.dcomp.dropoutguard.shared.infrastructure.event.rabbitmq.RabbitMQPublisher;
 import br.ufs.dcomp.dropoutguard.integration.AbstractContainerIntegrationTest;
 import br.ufs.dcomp.dropoutguard.integration.IntegrationTest;
 import org.junit.jupiter.api.BeforeAll;

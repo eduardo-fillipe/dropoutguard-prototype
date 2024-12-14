@@ -1,9 +1,9 @@
 package br.ufs.dcomp.dropoutguard.unit.infrastructure.event;
 
-import br.ufs.dcomp.dropoutguard.domain.event.EventMessage;
-import br.ufs.dcomp.dropoutguard.domain.event.exception.EventPublisherException;
-import br.ufs.dcomp.dropoutguard.infrastructure.event.AMQPPublisher;
-import br.ufs.dcomp.dropoutguard.infrastructure.event.AbstractAMQPPublisher;
+import br.ufs.dcomp.dropoutguard.shared.domain.event.EventMessage;
+import br.ufs.dcomp.dropoutguard.shared.domain.event.exception.EventPublisherException;
+import br.ufs.dcomp.dropoutguard.shared.infrastructure.event.AMQPPublisher;
+import br.ufs.dcomp.dropoutguard.shared.infrastructure.event.AbstractAMQPPublisher;
 import br.ufs.dcomp.dropoutguard.unit.UnitTest;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;

@@ -1,7 +1,7 @@
 package br.ufs.dcomp.dropoutguard.integration.infrastructure.event.rabbitmq;
 
-import br.ufs.dcomp.dropoutguard.domain.event.enqueuer.KnowledgeDatabaseUpdateJobDTO;
-import br.ufs.dcomp.dropoutguard.infrastructure.event.rabbitmq.RabbitMqUpdateJobEnqueuer;
+import br.ufs.dcomp.dropoutguard.hub.domain.knowledgedatabase.enqueuer.KnowledgeDatabaseUpdateJobDTO;
+import br.ufs.dcomp.dropoutguard.shared.infrastructure.event.rabbitmq.RabbitMqUpdateJobEnqueuer;
 import br.ufs.dcomp.dropoutguard.integration.AbstractContainerIntegrationTest;
 import br.ufs.dcomp.dropoutguard.integration.IntegrationTest;
 import com.fasterxml.jackson.databind.ObjectMapper;

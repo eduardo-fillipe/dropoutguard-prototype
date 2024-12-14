@@ -1,7 +1,7 @@
 package br.ufs.dcomp.dropoutguard.unit.domain.knowledgedatabase;
 
-import br.ufs.dcomp.dropoutguard.domain.knowledgedatabase.KnowledgeDatabase;
-import br.ufs.dcomp.dropoutguard.domain.knowledgedatabase.KnowledgeDatabaseStatus;
+import br.ufs.dcomp.dropoutguard.api.domain.knowledgedatabase.KnowledgeDatabase;
+import br.ufs.dcomp.dropoutguard.shared.domain.knowledgedatabase.KnowledgeDatabaseStatus;
 import br.ufs.dcomp.dropoutguard.unit.UnitTest;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Nested;

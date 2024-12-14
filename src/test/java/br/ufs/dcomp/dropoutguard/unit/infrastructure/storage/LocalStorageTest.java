@@ -1,8 +1,8 @@
 package br.ufs.dcomp.dropoutguard.unit.infrastructure.storage;
 
-import br.ufs.dcomp.dropoutguard.domain.storage.FileObject;
-import br.ufs.dcomp.dropoutguard.domain.storage.exception.FileNotFoundException;
-import br.ufs.dcomp.dropoutguard.infrastructure.storage.LocalStorageComponentImpl;
+import br.ufs.dcomp.dropoutguard.shared.domain.storage.FileObject;
+import br.ufs.dcomp.dropoutguard.shared.domain.storage.exception.FileNotFoundException;
+import br.ufs.dcomp.dropoutguard.shared.infrastructure.storage.LocalStorageComponentImpl;
 import br.ufs.dcomp.dropoutguard.unit.UnitTest;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.Assertions;

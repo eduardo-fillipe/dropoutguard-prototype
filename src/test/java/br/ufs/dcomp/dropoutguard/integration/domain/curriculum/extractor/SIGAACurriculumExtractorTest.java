@@ -1,8 +1,8 @@
 package br.ufs.dcomp.dropoutguard.integration.domain.curriculum.extractor;
 
-import br.ufs.dcomp.dropoutguard.domain.curriculum.extractor.CurriculumFields;
-import br.ufs.dcomp.dropoutguard.domain.curriculum.extractor.SIGAACurriculumExtractor;
-import br.ufs.dcomp.dropoutguard.domain.storage.FileObject;
+import br.ufs.dcomp.dropoutguard.hub.domain.curriculum.extractor.CurriculumFields;
+import br.ufs.dcomp.dropoutguard.hub.domain.curriculum.extractor.SIGAACurriculumExtractor;
+import br.ufs.dcomp.dropoutguard.shared.domain.storage.FileObject;
 import br.ufs.dcomp.dropoutguard.integration.AbstractContainerIntegrationTest;
 import br.ufs.dcomp.dropoutguard.integration.IntegrationTest;
 import com.fasterxml.jackson.core.JsonProcessingException;

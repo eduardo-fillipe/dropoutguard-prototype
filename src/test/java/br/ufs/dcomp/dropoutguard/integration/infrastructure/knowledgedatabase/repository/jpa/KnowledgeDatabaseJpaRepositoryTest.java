@@ -1,8 +1,8 @@
 package br.ufs.dcomp.dropoutguard.integration.infrastructure.knowledgedatabase.repository.jpa;
 
-import br.ufs.dcomp.dropoutguard.domain.knowledgedatabase.KnowledgeDatabase;
-import br.ufs.dcomp.dropoutguard.domain.knowledgedatabase.KnowledgeDatabaseRepository;
-import br.ufs.dcomp.dropoutguard.infrastructure.knowledgedatabase.repository.jpa.KnowledgeDatabaseEntity;
+import br.ufs.dcomp.dropoutguard.api.domain.knowledgedatabase.KnowledgeDatabase;
+import br.ufs.dcomp.dropoutguard.api.domain.knowledgedatabase.KnowledgeDatabaseRepository;
+import br.ufs.dcomp.dropoutguard.shared.infrastructure.knowledgedatabase.repository.jpa.KnowledgeDatabaseEntity;
 import br.ufs.dcomp.dropoutguard.integration.AbstractContainerIntegrationTest;
 import br.ufs.dcomp.dropoutguard.integration.IntegrationTest;
 import jakarta.transaction.Transactional;

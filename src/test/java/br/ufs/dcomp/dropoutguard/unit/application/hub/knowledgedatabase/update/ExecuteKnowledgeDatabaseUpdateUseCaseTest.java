@@ -1,16 +1,16 @@
 package br.ufs.dcomp.dropoutguard.unit.application.hub.knowledgedatabase.update;
 
-import br.ufs.dcomp.dropoutguard.application.hub.knowledgedatabase.executeupdate.ExecuteKnowledgeDatabaseUpdateUseCase;
-import br.ufs.dcomp.dropoutguard.domain.curriculum.Register;
-import br.ufs.dcomp.dropoutguard.domain.event.enqueuer.KnowledgeDatabaseUpdateJobDTO;
-import br.ufs.dcomp.dropoutguard.domain.knowledgedatabase.KnowledgeDatabaseEventDTO;
-import br.ufs.dcomp.dropoutguard.domain.knowledgedatabase.KnowledgeDatabaseStatus;
-import br.ufs.dcomp.dropoutguard.domain.knowledgedatabase.update.KnowledgeDatabaseUpdateJob;
-import br.ufs.dcomp.dropoutguard.domain.knowledgedatabase.update.KnowledgeDatabaseUpdateJobProgressRepository;
-import br.ufs.dcomp.dropoutguard.domain.storage.FileObject;
-import br.ufs.dcomp.dropoutguard.domain.storage.StorageComponent;
-import br.ufs.dcomp.dropoutguard.infrastructure.event.KnowledgeDatabaseEventMessagePublisher;
-import br.ufs.dcomp.dropoutguard.infrastructure.event.rabbitmq.RabbitMqUpdateJobEnqueuer;
+import br.ufs.dcomp.dropoutguard.hub.application.knowledgedatabase.ExecuteKnowledgeDatabaseUpdateUseCase;
+import br.ufs.dcomp.dropoutguard.shared.domain.curriculum.Register;
+import br.ufs.dcomp.dropoutguard.hub.domain.knowledgedatabase.enqueuer.KnowledgeDatabaseUpdateJobDTO;
+import br.ufs.dcomp.dropoutguard.shared.domain.knowledgedatabase.KnowledgeDatabaseEventDTO;
+import br.ufs.dcomp.dropoutguard.shared.domain.knowledgedatabase.KnowledgeDatabaseStatus;
+import br.ufs.dcomp.dropoutguard.hub.domain.knowledgedatabase.KnowledgeDatabaseUpdateJob;
+import br.ufs.dcomp.dropoutguard.hub.domain.knowledgedatabase.KnowledgeDatabaseUpdateJobProgressRepository;
+import br.ufs.dcomp.dropoutguard.shared.domain.storage.FileObject;
+import br.ufs.dcomp.dropoutguard.shared.domain.storage.StorageComponent;
+import br.ufs.dcomp.dropoutguard.shared.infrastructure.event.KnowledgeDatabaseEventMessagePublisher;
+import br.ufs.dcomp.dropoutguard.shared.infrastructure.event.rabbitmq.RabbitMqUpdateJobEnqueuer;
 import br.ufs.dcomp.dropoutguard.unit.UnitTest;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;

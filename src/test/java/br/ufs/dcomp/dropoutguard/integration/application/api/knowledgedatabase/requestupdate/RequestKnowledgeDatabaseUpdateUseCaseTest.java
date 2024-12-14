@@ -1,14 +1,14 @@
 package br.ufs.dcomp.dropoutguard.integration.application.api.knowledgedatabase.requestupdate;
 
-import br.ufs.dcomp.dropoutguard.application.api.knowledgedatabase.requestupdate.RequestKnowledgeDatabaseUpdateUseCase;
-import br.ufs.dcomp.dropoutguard.application.api.knowledgedatabase.requestupdate.RequestUpdateParams;
-import br.ufs.dcomp.dropoutguard.application.api.knowledgedatabase.requestupdate.RequestUpdateResultDTO;
-import br.ufs.dcomp.dropoutguard.domain.curriculum.Register;
-import br.ufs.dcomp.dropoutguard.domain.event.EventMessage;
-import br.ufs.dcomp.dropoutguard.domain.knowledgedatabase.KnowledgeDatabaseEventDTO;
-import br.ufs.dcomp.dropoutguard.domain.knowledgedatabase.KnowledgeDatabaseRepository;
-import br.ufs.dcomp.dropoutguard.domain.knowledgedatabase.KnowledgeDatabaseStatus;
-import br.ufs.dcomp.dropoutguard.domain.storage.StorageComponent;
+import br.ufs.dcomp.dropoutguard.api.application.knowledgedatabase.requestupdate.RequestKnowledgeDatabaseUpdateUseCase;
+import br.ufs.dcomp.dropoutguard.api.application.knowledgedatabase.requestupdate.RequestUpdateParams;
+import br.ufs.dcomp.dropoutguard.api.application.knowledgedatabase.requestupdate.RequestUpdateResultDTO;
+import br.ufs.dcomp.dropoutguard.shared.domain.curriculum.Register;
+import br.ufs.dcomp.dropoutguard.shared.domain.event.EventMessage;
+import br.ufs.dcomp.dropoutguard.shared.domain.knowledgedatabase.KnowledgeDatabaseEventDTO;
+import br.ufs.dcomp.dropoutguard.api.domain.knowledgedatabase.KnowledgeDatabaseRepository;
+import br.ufs.dcomp.dropoutguard.shared.domain.knowledgedatabase.KnowledgeDatabaseStatus;
+import br.ufs.dcomp.dropoutguard.shared.domain.storage.StorageComponent;
 import br.ufs.dcomp.dropoutguard.integration.AbstractContainerIntegrationTest;
 import br.ufs.dcomp.dropoutguard.integration.IntegrationTest;
 import com.fasterxml.jackson.core.type.TypeReference;

@@ -1,9 +1,9 @@
 package br.ufs.dcomp.dropoutguard.integration.infrastructure.curriculum;
 
-import br.ufs.dcomp.dropoutguard.domain.curriculum.Curriculum;
-import br.ufs.dcomp.dropoutguard.domain.curriculum.Register;
-import br.ufs.dcomp.dropoutguard.domain.curriculum.Student;
-import br.ufs.dcomp.dropoutguard.infrastructure.curriculum.repository.jpa.*;
+import br.ufs.dcomp.dropoutguard.hub.domain.curriculum.Curriculum;
+import br.ufs.dcomp.dropoutguard.shared.domain.curriculum.Register;
+import br.ufs.dcomp.dropoutguard.hub.domain.curriculum.Student;
+import br.ufs.dcomp.dropoutguard.shared.infrastructure.curriculum.repository.jpa.*;
 import br.ufs.dcomp.dropoutguard.integration.AbstractContainerIntegrationTest;
 import br.ufs.dcomp.dropoutguard.integration.IntegrationTest;
 import jakarta.transaction.Transactional;
