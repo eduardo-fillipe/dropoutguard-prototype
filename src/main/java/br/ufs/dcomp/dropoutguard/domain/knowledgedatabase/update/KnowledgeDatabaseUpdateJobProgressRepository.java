@@ -9,4 +9,6 @@ public interface KnowledgeDatabaseUpdateJobProgressRepository {
     KnowledgeDatabaseUpdateJob save(KnowledgeDatabaseUpdateJob updateKnowledgeDatabaseJobProgress);
 
     Optional<KnowledgeDatabaseUpdateJob> find(String knowledgeDatabaseId, String registerNumber);
+
+    boolean haveAllJobsBeenProcessed(String knowledgeDatabaseId);
 }

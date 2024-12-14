@@ -1,5 +1,6 @@
 package br.ufs.dcomp.dropoutguard.infrastructure.knowledgedatabase.repository.jpa;
 
+import br.ufs.dcomp.dropoutguard.domain.knowledgedatabase.RegisterUpdateStatus;
 import br.ufs.dcomp.dropoutguard.domain.knowledgedatabase.update.KnowledgeDatabaseUpdateJob;
 import br.ufs.dcomp.dropoutguard.domain.knowledgedatabase.update.KnowledgeDatabaseUpdateJobProgressRepository;
 import jakarta.transaction.Transactional;
@@ -26,6 +27,7 @@ public class KnowledgeDatabaseUpdateServiceProgress implements KnowledgeDatabase
         );
     }
 
+    // TODO: Tests
     @Override
     public KnowledgeDatabaseUpdateJob save(KnowledgeDatabaseUpdateJob updateKnowledgeDatabaseJobProgress) {
         return this.repository
@@ -33,10 +35,18 @@ public class KnowledgeDatabaseUpdateServiceProgress implements KnowledgeDatabase
                 .toDomain();
     }
 
+    //TODO: Tests
     @Override
     public Optional<KnowledgeDatabaseUpdateJob> find(String knowledgeDatabaseId, String registerNumber) {
         return this.repository
-                .findById(new KnowledgeDatabaseRegisterProgressEntityId(knowledgeDatabaseId, registerNumber))
+                .findById(new KnowledgeDatabaseRegisterProgressEntityId(registerNumber, knowledgeDatabaseId))
                 .map(KnowledgeDatabaseRegisterProgressEntity::toDomain);
+    }
+
+    //TODO: Tests
+    @Override
+    public boolean haveAllJobsBeenProcessed(String knowledgeDatabaseId) {
+        return !this.repository
+                .existsByKnowledgeDatabaseIdAndStatus(knowledgeDatabaseId, RegisterUpdateStatus.CREATED);
     }
 }

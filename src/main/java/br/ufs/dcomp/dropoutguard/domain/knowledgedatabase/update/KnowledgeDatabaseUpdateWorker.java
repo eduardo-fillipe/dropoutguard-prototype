@@ -9,10 +9,15 @@ import br.ufs.dcomp.dropoutguard.domain.curriculum.exception.CurriculumNotFoundE
 import br.ufs.dcomp.dropoutguard.domain.curriculum.extractor.CurriculumFields;
 import br.ufs.dcomp.dropoutguard.domain.curriculum.extractor.SIGAACurriculumExtractor;
 import br.ufs.dcomp.dropoutguard.domain.curriculum.extractor.exception.InvalidCurriculumException;
+import br.ufs.dcomp.dropoutguard.domain.event.EventMessage;
+import br.ufs.dcomp.dropoutguard.domain.event.EventPublisher;
 import br.ufs.dcomp.dropoutguard.domain.event.enqueuer.KnowledgeDatabaseUpdateJobDTO;
+import br.ufs.dcomp.dropoutguard.domain.knowledgedatabase.KnowledgeDatabaseEventDTO;
+import br.ufs.dcomp.dropoutguard.domain.knowledgedatabase.KnowledgeDatabaseStatus;
 import br.ufs.dcomp.dropoutguard.domain.storage.FileObject;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
+import org.springframework.transaction.annotation.Isolation;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Optional;
@@ -25,18 +30,21 @@ public class KnowledgeDatabaseUpdateWorker {
     private final SIGAACurriculumExtractor extractor;
     private final CurriculumRepository curriculumRepository;
     private final KnowledgeDatabaseUpdateJobProgressRepository jobProgressRepository;
+    private final EventPublisher<KnowledgeDatabaseEventDTO> eventPublisher;
 
     public KnowledgeDatabaseUpdateWorker(SIGAACurriculumDownloader downloader,
                                          SIGAACurriculumExtractor extractor,
                                          CurriculumRepository curriculumRepository,
-                                         KnowledgeDatabaseUpdateJobProgressRepository jobProgressRepository) {
+                                         KnowledgeDatabaseUpdateJobProgressRepository jobProgressRepository,
+                                         EventPublisher<KnowledgeDatabaseEventDTO> eventPublisher) {
         this.downloader = downloader;
         this.extractor = extractor;
         this.curriculumRepository = curriculumRepository;
         this.jobProgressRepository = jobProgressRepository;
+        this.eventPublisher = eventPublisher;
     }
 
-    @Transactional
+    @Transactional(isolation = Isolation.REPEATABLE_READ)
     public void doWork(KnowledgeDatabaseUpdateJobDTO jobDTO) {
         log.info("Starting update job {}", jobDTO);
         Optional<KnowledgeDatabaseUpdateJob> jobOptional = jobProgressRepository
@@ -62,6 +70,11 @@ public class KnowledgeDatabaseUpdateWorker {
 
             saveJobWithError(job, e.getClass().getName());
             log.info("Job processed with error: {}", jobDTO);
+        }
+
+        if (jobProgressRepository.haveAllJobsBeenProcessed(jobDTO.knowledgeDatabaseId())) {
+            log.info("All jobs processed for knowledge database {}", jobDTO.knowledgeDatabaseId());
+            publishEvent(jobDTO);
         }
     }
 
@@ -91,5 +104,15 @@ public class KnowledgeDatabaseUpdateWorker {
     private void saveJobWithError(KnowledgeDatabaseUpdateJob job, String error) {
         job.processJobWithError(error);
         jobProgressRepository.save(job);
+    }
+
+    private void publishEvent(KnowledgeDatabaseUpdateJobDTO jobDTO) {
+        eventPublisher.publish(EventMessage.<KnowledgeDatabaseEventDTO>builder()
+                .subject(KnowledgeDatabaseStatus.UPDATED.toString().toLowerCase())
+                .payload(KnowledgeDatabaseEventDTO.builder()
+                        .id(jobDTO.knowledgeDatabaseId())
+                        .status(KnowledgeDatabaseStatus.UPDATED)
+                        .build())
+                .build());
     }
 }
