@@ -19,7 +19,7 @@ import java.util.List;
 import static org.assertj.core.api.Assertions.assertThat;
 
 @IntegrationTest
-public class KnowledgeDatabaseUpdateServiceTest extends AbstractContainerIntegrationTest {
+public class KnowledgeDatabaseUpdateServiceProgressTest extends AbstractContainerIntegrationTest {
     @Autowired
     private KnowledgeDatabaseUpdateProgressJpaRepository repository;
 
@@ -80,6 +80,42 @@ public class KnowledgeDatabaseUpdateServiceTest extends AbstractContainerIntegra
                     .allMatch(o -> (o.getKnowledgeDatabaseId().equals("1") && o.getRegister().getRegisterNumber().equals("1")
                             || (o.getKnowledgeDatabaseId().equals("2") && o.getRegister().getRegisterNumber().equals("1")))
                     )).isTrue();
+        }
+    }
+
+    @Nested
+    class HaveAllJobsBeenProcessed {
+
+        @Test
+        void shouldReturnTrue() {
+            KnowledgeDatabaseUpdateJob job = new KnowledgeDatabaseUpdateJob(Register.of("1"), "1");
+            job.processJob();
+
+            repository.save(new KnowledgeDatabaseRegisterProgressEntity(job));
+
+            assertThat(service.haveAllJobsBeenProcessed(job.getKnowledgeDatabaseId())).isTrue();
+        }
+
+        @Test
+        void shouldReturnTrueWhenSomeJobWasProcessedWithError() {
+            KnowledgeDatabaseUpdateJob job = new KnowledgeDatabaseUpdateJob(Register.of("1"), "1");
+            KnowledgeDatabaseUpdateJob job2 = new KnowledgeDatabaseUpdateJob(Register.of("2"), "1");
+
+            job2.processJobWithError("Teste Error");
+            job.processJob();
+
+            repository.saveAll(List.of(new KnowledgeDatabaseRegisterProgressEntity(job), new KnowledgeDatabaseRegisterProgressEntity(job2)));
+
+            assertThat(service.haveAllJobsBeenProcessed(job.getKnowledgeDatabaseId())).isTrue();
+        }
+
+        @Test
+        void shouldReturnFalse() {
+            KnowledgeDatabaseUpdateJob job = new KnowledgeDatabaseUpdateJob(Register.of("1"), "1");
+
+            repository.save(new KnowledgeDatabaseRegisterProgressEntity(job));
+
+            assertThat(service.haveAllJobsBeenProcessed(job.getKnowledgeDatabaseId())).isFalse();
         }
     }
 }

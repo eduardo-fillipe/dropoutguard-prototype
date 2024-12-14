@@ -27,7 +27,6 @@ public class KnowledgeDatabaseUpdateServiceProgress implements KnowledgeDatabase
         );
     }
 
-    // TODO: Tests
     @Override
     public KnowledgeDatabaseUpdateJob save(KnowledgeDatabaseUpdateJob updateKnowledgeDatabaseJobProgress) {
         return this.repository
@@ -35,7 +34,6 @@ public class KnowledgeDatabaseUpdateServiceProgress implements KnowledgeDatabase
                 .toDomain();
     }
 
-    //TODO: Tests
     @Override
     public Optional<KnowledgeDatabaseUpdateJob> find(String knowledgeDatabaseId, String registerNumber) {
         return this.repository
@@ -43,7 +41,6 @@ public class KnowledgeDatabaseUpdateServiceProgress implements KnowledgeDatabase
                 .map(KnowledgeDatabaseRegisterProgressEntity::toDomain);
     }
 
-    //TODO: Tests
     @Override
     public boolean haveAllJobsBeenProcessed(String knowledgeDatabaseId) {
         return !this.repository

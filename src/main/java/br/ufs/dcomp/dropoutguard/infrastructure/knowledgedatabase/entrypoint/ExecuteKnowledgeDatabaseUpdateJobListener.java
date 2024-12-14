@@ -48,7 +48,7 @@ public class ExecuteKnowledgeDatabaseUpdateJobListener {
             log.info("Finished processing job {}", mapper.writeValueAsString(eventMessage));
             channel.basicAck(tag, false);
         } catch (Exception e) {
-            channel.basicNack(tag, false, false);
+            channel.basicNack(tag, false, true);
             throw new RuntimeException(e);
         }
     }
