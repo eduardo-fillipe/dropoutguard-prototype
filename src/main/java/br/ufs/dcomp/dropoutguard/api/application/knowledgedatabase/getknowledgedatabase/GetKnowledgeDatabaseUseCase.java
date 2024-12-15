@@ -26,7 +26,7 @@ public class GetKnowledgeDatabaseUseCase {
      * @return a result DTO representing the retrieved knowledge database entry
      * @throws KnowledgeDatabaseNotFoundException if the knowledge database entry is not found
      */
-    public GetKnowledgeUseCaseResultDTO execute(GetKnowledgeUseCaseParams params) {
+    public GetKnowledgeUseCaseResultDTO execute(GetKnowledgeUseCaseParams params) throws KnowledgeDatabaseNotFoundException{
         return GetKnowledgeUseCaseResultDTO.of(
                 knowledgeDatabaseRepository.find(params.knowledgeUseCaseId())
                         .orElseThrow(() -> new KnowledgeDatabaseNotFoundException(params.knowledgeUseCaseId()))
