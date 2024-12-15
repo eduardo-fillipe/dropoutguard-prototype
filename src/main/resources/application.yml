@@ -1,4 +1,12 @@
 spring:
+    shell:
+        command:
+            completion:
+                enabled: true
+        interactive:
+            enabled: true
+        script:
+            enabled: true
     application:
         name: dropoutguard
     threads:

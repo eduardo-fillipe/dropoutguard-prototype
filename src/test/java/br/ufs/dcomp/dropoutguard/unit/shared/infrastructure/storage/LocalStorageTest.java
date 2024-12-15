@@ -15,7 +15,7 @@ import java.nio.file.Path;
 @UnitTest
 public class LocalStorageTest {
 
-    private final Path rootPath = Path.of("src","test", "java", "br", "ufs", "dcomp", "dropoutguard", "unit", "infrastructure", "storage");
+    private final Path rootPath = Path.of("src","test", "java", "br", "ufs", "dcomp", "dropoutguard", "unit", "shared", "infrastructure", "storage");
     private final String objectName = "test.txt";
     private final LocalStorageComponentImpl storageComponent = new LocalStorageComponentImpl(rootPath.toAbsolutePath().toString());
 

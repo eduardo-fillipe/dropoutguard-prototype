@@ -29,7 +29,7 @@ Por fim, a especificação arquitetural define dois grandes módulos de alto ní
   - [Data JPA](https://spring.io/projects/spring-data-jpa)
   - [Web](https://docs.spring.io/spring-boot/reference/web/index.html)
 - [Flyway](https://mvnrepository.com/artifact/org.flywaydb/flyway-core): migrações de esquema do banco de dados.
-- [Lombok](https://projectlombok.org/): redução de código boilerplate.
+- [Lombok](https://projectlombok.org/): redução de código boilerplate, principalmente para criação de builders.
 - [TestContainers](https://testcontainers.com/): controle de containers Docker durante os testes.
 - [Mockito](https://site.mockito.org/) e [AssertJ](https://assertj.github.io/doc/): criação de mocks e validação de condições de teste.
 

@@ -1,4 +1,12 @@
 spring:
+    shell:
+        command:
+            completion:
+                enabled: false
+        interactive:
+            enabled: false
+        script:
+            enabled: false
     jpa:
         show-sql: true
         hibernate:
