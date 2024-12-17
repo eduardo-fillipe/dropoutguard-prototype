@@ -3,8 +3,8 @@ package br.ufs.dcomp.dropoutguard.shared.infrastructure.knowledgedatabase.reposi
 import br.ufs.dcomp.dropoutguard.hub.domain.knowledgedatabase.RegisterUpdateStatus;
 import br.ufs.dcomp.dropoutguard.hub.domain.knowledgedatabase.KnowledgeDatabaseUpdateJob;
 import br.ufs.dcomp.dropoutguard.hub.domain.knowledgedatabase.KnowledgeDatabaseUpdateJobProgressRepository;
-import jakarta.transaction.Transactional;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.Optional;
@@ -25,13 +25,19 @@ public class KnowledgeDatabaseUpdateServiceProgress implements KnowledgeDatabase
                 .map(KnowledgeDatabaseRegisterProgressEntity::new)
                 .toList()
         );
+
+        this.repository.flush();
     }
 
     @Override
+    @Transactional
     public KnowledgeDatabaseUpdateJob save(KnowledgeDatabaseUpdateJob updateKnowledgeDatabaseJobProgress) {
-        return this.repository
+        KnowledgeDatabaseUpdateJob result = this.repository
                 .save(new KnowledgeDatabaseRegisterProgressEntity(updateKnowledgeDatabaseJobProgress))
                 .toDomain();
+
+        this.repository.flush();
+        return result;
     }
 
     @Override

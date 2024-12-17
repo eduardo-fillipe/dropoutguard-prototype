@@ -52,16 +52,36 @@ Certifique-se de que o **Docker daemon** está em execução. Em seguida, execut
 ### Executando a Aplicação
 
 1. **Via Docker Compose**  
-   Todas as dependências serão criadas e configuradas automaticamente. A aplicação estará disponível na porta **8080**.
+   Todas as dependências serão criadas e configuradas automaticamente.
    ```shell
-   docker compose up
+   docker compose up -d
+   ./mvnw spring-boot:run
    ```
+   ou
+    ```shell
+   # Supondo que o java 21 esteja exposto no PATH do sistema
+   docker compose up -d
+   ./mvnw package -D skipTests
+   java -jar target/dropoutguard.jar
+    ```
 
 2. **Manual**  
-   Configure um RabbitMQ na porta **5672** e um PostgreSQL na porta **5432**. As portas podem ser ajustadas no arquivo `application.yml`. Execute os comandos abaixo:
-   ```shell
-   ./mvnw install -D skipTests
-   ```  
+   Configure um RabbitMQ na porta **5672** e um PostgreSQL na porta **5432**. As portas podem ser ajustadas no arquivo `application.yml`.
    ```shell
    ./mvnw spring-boot:run
    ```
+
+### Utilizando o protótipo
+O protótipo expõe um _shell_ básico para uso das operações implementadas. Uma vez sendo executada, o _shell_ irá inicializar automaticamente(`dropoutguard:> `). Os comandos disponíveis podem ser visualizados através do comando `help`.
+
+```
+# Help global
+dropoutguard:> help 
+```
+```
+# Recupera a base de conhecimento pelo ID
+dropoutguard:> kbase get --help
+
+# Solicita a atualização da base de conhecimento
+dropoutguard:> kbase update --help
+```

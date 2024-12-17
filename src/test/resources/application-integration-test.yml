@@ -1,4 +1,6 @@
 spring:
+    aop:
+        auto: false
     shell:
         command:
             completion:
@@ -7,6 +9,8 @@ spring:
             enabled: false
         script:
             enabled: false
+        context:
+            close: false
     jpa:
         show-sql: true
         hibernate:

@@ -23,7 +23,7 @@ CREATE TABLE intelligence_hub.knowledge_database_register_progress
 (
     register              VARCHAR(255)                NOT NULL,
     knowledge_database_id VARCHAR(255)                NOT NULL,
-    status                SMALLINT                    NOT NULL,
+    status                VARCHAR(255)                NOT NULL,
     error                 VARCHAR(255),
     created_at            TIMESTAMP WITHOUT TIME ZONE NOT NULL,
     last_modified         TIMESTAMP WITHOUT TIME ZONE NOT NULL,

@@ -1,9 +1,6 @@
 package br.ufs.dcomp.dropoutguard.hub.domain.curriculum;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NonNull;
+import lombok.*;
 
 import java.util.UUID;
 
@@ -13,6 +10,7 @@ import java.util.UUID;
  */
 @Getter
 @AllArgsConstructor
+@With
 public class Student {
     /**
      * The unique identifier for the Student, generated as a UUID string.

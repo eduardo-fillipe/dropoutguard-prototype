@@ -26,6 +26,7 @@ public class KnowledgeDatabaseRegisterProgressEntity {
     @Column(name = "knowledge_database_id")
     private String knowledgeDatabaseId;
 
+    @Enumerated(EnumType.STRING)
     @Column(name = "status", nullable = false)
     private RegisterUpdateStatus status;
 

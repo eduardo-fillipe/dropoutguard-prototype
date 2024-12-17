@@ -1,10 +1,7 @@
 package br.ufs.dcomp.dropoutguard.hub.domain.curriculum;
 
 import br.ufs.dcomp.dropoutguard.shared.domain.curriculum.Register;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NonNull;
+import lombok.*;
 
 import java.math.BigDecimal;
 import java.time.ZonedDateTime;
@@ -16,6 +13,8 @@ import java.util.UUID;
  */
 @Getter
 @AllArgsConstructor
+@With
+@Builder(toBuilder = true, builderMethodName = "completeBuilder", builderClassName = "CompleteBuilder")
 public class Curriculum {
 
     /**
@@ -50,7 +49,7 @@ public class Curriculum {
 
     /**
      * Builder-based constructor for creating an instance of Curriculum with required fields.
-     * 
+     *
      * @param id the unique identifier for the curriculum, optional. If null, a UUID is generated.
      * @param knowledgeDatabaseId the identifier of the knowledge database, cannot be null.
      * @param register the register containing the curriculum data, cannot be null.

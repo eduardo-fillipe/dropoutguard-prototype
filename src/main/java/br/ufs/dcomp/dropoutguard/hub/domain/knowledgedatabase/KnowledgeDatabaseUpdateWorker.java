@@ -17,7 +17,6 @@ import br.ufs.dcomp.dropoutguard.shared.domain.knowledgedatabase.KnowledgeDataba
 import br.ufs.dcomp.dropoutguard.shared.domain.storage.FileObject;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
-import org.springframework.transaction.annotation.Isolation;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Optional;
@@ -56,7 +55,7 @@ public class KnowledgeDatabaseUpdateWorker {
      *
      * @param jobDTO the job DTO containing the information required for processing
      */
-    @Transactional(isolation = Isolation.REPEATABLE_READ)
+    @Transactional
     public void doWork(KnowledgeDatabaseUpdateJobDTO jobDTO) {
         log.info("Starting update job {}", jobDTO);
         Optional<KnowledgeDatabaseUpdateJob> jobOptional = jobProgressRepository

@@ -1,6 +1,5 @@
 package br.ufs.dcomp.dropoutguard.shared.infrastructure.knowledgedatabase.entrypoint;
 
-import br.ufs.dcomp.dropoutguard.shared.domain.event.EventMessage;
 import br.ufs.dcomp.dropoutguard.hub.domain.knowledgedatabase.enqueuer.KnowledgeDatabaseUpdateJobDTO;
 import br.ufs.dcomp.dropoutguard.hub.domain.knowledgedatabase.KnowledgeDatabaseUpdateWorker;
 import com.fasterxml.jackson.core.JsonProcessingException;
@@ -45,9 +44,9 @@ public class ExecuteKnowledgeDatabaseUpdateJobListener {
         try {
             log.info("Received knowledge database update job {}", message);
 
-            EventMessage<KnowledgeDatabaseUpdateJobDTO> eventMessage = mapper.readValue(message, new TypeReference<>() {});
+            KnowledgeDatabaseUpdateJobDTO eventMessage = mapper.readValue(message, new TypeReference<>() {});
 
-            worker.doWork(eventMessage.getPayload());
+            worker.doWork(eventMessage);
 
             log.info("Finished processing job {}", mapper.writeValueAsString(eventMessage));
             channel.basicAck(tag, false);
