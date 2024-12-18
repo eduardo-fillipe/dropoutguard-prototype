@@ -27,7 +27,7 @@ Por fim, a especificação arquitetural define dois grandes módulos de alto ní
   - [AMQP](https://spring.io/projects/spring-amqp)
   - [Aspect](https://docs.spring.io/spring-framework/reference/core/aop.html)
   - [Data JPA](https://spring.io/projects/spring-data-jpa)
-  - [Web](https://docs.spring.io/spring-boot/reference/web/index.html)
+  - [Shell](https://spring.io/projects/spring-shell)
 - [Flyway](https://mvnrepository.com/artifact/org.flywaydb/flyway-core): migrações de esquema do banco de dados.
 - [Lombok](https://projectlombok.org/): redução de código boilerplate, principalmente para criação de builders.
 - [TestContainers](https://testcontainers.com/): controle de containers Docker durante os testes.
