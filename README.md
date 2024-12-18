@@ -12,10 +12,10 @@ Por fim, a especificação arquitetural define dois grandes módulos de alto ní
 
 ## Documentação e Especificação Arquitetural
 
-- [Especificação de Alto Nível]()
-- [Projeto Detalhado]()
-- [Repositório de Documentação como Código]()
-- [Monografia Original: Uso de Redes Bayesianas Multinível para Prever a Evasão Estudantil]()
+- [Especificação de Alto Nível](docs/ga31___lncc___projeto_1.pdf)
+- [Projeto Detalhado](docs/ga31___lncc___projeto_2.pdf)
+- [Repositório de Documentação como Código](https://github.com/eduardo-fillipe/dropout-guard-specification)
+- [Monografia Original: Uso de Redes Bayesianas Multinível para Prever a Evasão Estudantil](docs/tcc_student_propout_prediction_mbn%20-%20final.pdf)
 
 ## Tecnologias Utilizadas
 
