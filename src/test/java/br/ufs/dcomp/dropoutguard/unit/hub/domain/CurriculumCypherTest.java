@@ -1,10 +1,12 @@
-package br.ufs.dcomp.dropoutguard.hub.domain.curriculum.criptography;
+package br.ufs.dcomp.dropoutguard.unit.hub.domain;
 
 import br.ufs.dcomp.dropoutguard.hub.domain.curriculum.Curriculum;
 import br.ufs.dcomp.dropoutguard.hub.domain.curriculum.Student;
+import br.ufs.dcomp.dropoutguard.hub.domain.curriculum.criptography.CurriculumCypher;
 import br.ufs.dcomp.dropoutguard.shared.domain.criptography.Cypher;
 import br.ufs.dcomp.dropoutguard.shared.domain.criptography.CypherMethodEnum;
 import br.ufs.dcomp.dropoutguard.shared.domain.curriculum.Register;
+import br.ufs.dcomp.dropoutguard.unit.UnitTest;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
@@ -14,6 +16,7 @@ import java.math.BigDecimal;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.Mockito.mock;
 
+@UnitTest
 class CurriculumCypherTest {
 
     private final Cypher cypher = mock(Cypher.class);
